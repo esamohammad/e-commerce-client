@@ -10,15 +10,17 @@ import Inventory from './components/Inventory/Inventory';
 function App() {
   const router = createBrowserRouter([
     {
-      path:'/',
+      path: '/',
       element: <Main></Main>,
       children: [
         {
           path: '/',
+          loader: () => fetch('products.json'),
           element: <Shop></Shop>
         },
         {
-          path:'orders',
+          path: 'orders',
+          loader: () => fetch('products.json'),
           element: <Orders></Orders>
         },
         {
@@ -26,8 +28,8 @@ function App() {
           element: <Inventory></Inventory>
         },
         {
-          path:'about',
-          element:<About></About>
+          path: 'about',
+          element: <About></About>
         }
       ]
     },
